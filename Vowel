@@ -1,0 +1,13 @@
+% Define a predicate to count vowels in a string.
+count_vowels(String, Count) :-
+    atom_codes(String, Codes),  % Convert the string to a list of character codes.
+    include(is_vowel, Codes, VowelCodes),  % Filter out vowel character codes.
+    length(VowelCodes, Count).  % Count the remaining codes (vowels).
+
+% Define a predicate to check if a character code is a vowel.
+is_vowel(Code) :-
+    member(Code, [97, 101, 105, 111, 117, 65, 69, 73, 79, 85]).  % ASCII codes for lowercase and uppercase vowels.
+
+% Example usage:
+?- count_vowels("Hello, Prolog!", Count).
+% Count will be unified with the result.
